@@ -107,8 +107,8 @@ class TableToDo extends React.Component {
                                     <th>Company</th>
                                     <th>Position</th>
                                     <th>Age</th>
-                                    {buttonDelete && <th width="60px">Delete</th>}
-                                    {buttonDelete && <th width="60px" >Edit</th>}
+                                    {hiddenOpen && <th width="60px">Delete</th>}
+                                    {hiddenOpen && <th width="60px" >Edit</th>}
                                 </tr>
                             </thead>
                             <tbody>
