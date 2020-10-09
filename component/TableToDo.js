@@ -63,12 +63,12 @@ class TableToDo extends React.Component {
     }
     render() {
         let dataTable = this.state.dataTable;
-        let { dataCheckbox, closetrashCan, textSearch, buttonSearch, buttonDelete, buttonEdit,
-            checkALl, checkOne, dropAll, textAll } = this.props
+        let { dataCheckbox, buttonDelete,
+            hiddenOpen } = this.props
         const aa = dataTable.map((products, index) => {
             return <tr className="dataLists" key={index.toString()}>
                 <td>
-                    {checkOne && <input type="checkbox" checked={dataCheckbox.indexOf(index) !== -1} id="oneLine" name="oneLine" value={this.props.deleteOne} onClick={(e) => this.props.handleOneChecked(index, e)}></input>}
+                    {hiddenOpen && <input type="checkbox" checked={dataCheckbox.indexOf(index) !== -1} id="oneLine" name="oneLine" value={this.props.deleteOne} onClick={(e) => this.props.handleOneChecked(index, e)}></input>}
                 </td>
                 <td>{products.name}</td>
                 <td>{products.phoneNumber}</td>
@@ -76,10 +76,10 @@ class TableToDo extends React.Component {
                 <td>{products.positon}</td>
                 <td>{products.age}</td>
                 <td >
-                    {buttonDelete && <a href="!#" onClick={() => this.props.deleteData(index)}>Delete</a>}
+                    {hiddenOpen && <a href="!#" onClick={() => this.props.deleteData(index)}>Delete</a>}
                 </td>
                 <td >
-                    {buttonEdit && <a href="!#" onClick={() => this.props.clickEdit(index)}>Edit</a>}
+                    {hiddenOpen && <a href="!#" onClick={() => this.props.clickEdit(index)}>Edit</a>}
                 </td>
             </tr>
         }
@@ -90,17 +90,17 @@ class TableToDo extends React.Component {
                     <div id="menu">
                         <div id="tieuDe">Data List</div>
                         <button type="submit" className="add" onClick={this.props.moForm}>Add  New</button>
-                        {closetrashCan && <button type="submit" className="open" onClick={this.props.openTrashCan}>Open TrashCan</button>}
-                        {textSearch && <input type="text" className="timkiem" placeholder="Search...." value={this.state.result} onChange={this.search} />}
-                        {buttonSearch && <input type="button" className="buttonTimkiem" onClick={this.fitterData} value="Search"></input>}
+                        {hiddenOpen && <button type="submit" className="open" onClick={this.props.openTrashCan}>Open TrashCan</button>}
+                        {hiddenOpen && <input type="text" className="timkiem" placeholder="Search...." value={this.state.result} onChange={this.search} />}
+                        {hiddenOpen && <input type="button" className="buttonTimkiem" onClick={this.fitterData} value="Search"></input>}
                     </div>
                     <div id="thongtin">
                         <table id="idTable" cellPadding={20} border={0}>
                             <thead>
                                 <tr>
                                     <th>
-                                        {checkALl && <input type="checkbox" onClick={this.props.handleAllChecked} id="all" name="all" value={this.props.allChackbox}></input>}
-                                        {textAll && <label > All</label>}
+                                        {hiddenOpen && <input type="checkbox" onClick={this.props.handleAllChecked} id="all" name="all" value={this.props.allChackbox}></input>}
+                                        {hiddenOpen && <label > All</label>}
                                     </th>
                                     <th>Name</th>
                                     <th>phoneNumber</th>
@@ -113,7 +113,7 @@ class TableToDo extends React.Component {
                             </thead>
                             <tbody>
                                 {aa}
-                                {dropAll && <button type="submit" className="deleteAll" onClick={this.props.deleteAll}>Delete All</button>}
+                                {hiddenOpen && <button type="submit" className="deleteAll" onClick={this.props.deleteAll}>Delete All</button>}
 
                                 {/* <p >
                                     Bạn đang xem đến trang

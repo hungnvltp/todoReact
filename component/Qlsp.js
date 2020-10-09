@@ -21,54 +21,26 @@ class Qlsp extends React.Component {
             formDangNhap: false,
             submitUpdate: true,
             product: {},
-            closetrashCan: true,
-            textSearch: true,
-            buttonSearch: true,
-            buttonDelete: true,
-            buttonEdit: true,
-            checkALl: true,
-            checkOne: true,
-            dropAll: true,
-            textAll: true
+            hiddenOpen: true,
         }
     }
     handleSubmit = (product) => {
         this.setState({
+            hiddenOpen: true,
             dataTable: [...this.state.dataTable, this.state.product],
             product: {
                 name: "", company: "", phoneNumber: "", positon: "", age: ""
             },
-            formDangNhap: false,
-            closetrashCan: true,
-            textSearch: true,
-            buttonSearch: true,
-            buttonDelete: true,
-            buttonEdit: true,
-            checkALl: true,
-            checkOne: true,
-            dropAll: true,
-            textAll: true
+            formDangNhap: false
         })
     };
     clickEdit = (index) => {
-        // const { dataTable, product } = this.state.dataTable;
         this.index1 = index;
-
-
         this.setState({
+            hiddenOpen: false,
             formDangNhap: true,
             product: this.state.dataTable[index],
-            closetrashCan: false,
-            textSearch: false,
-            buttonSearch: false,
-            buttonDelete: false,
-            buttonEdit: false,
-            checkALl: false,
-            checkOne: false,
-            dropAll: false,
-            textAll: false
         })
-
     }
     clickUpdate = (product,) => {
         let dataTable = this.state.dataTable
@@ -76,15 +48,7 @@ class Qlsp extends React.Component {
         this.setState({
             formDangNhap: false,
             dataTable: this.state.dataTable,
-            closetrashCan: true,
-            textSearch: true,
-            buttonSearch: true,
-            buttonDelete: true,
-            buttonEdit: true,
-            checkALl: true,
-            checkOne: true,
-            dropAll: true,
-            textAll: true
+            hiddenOpen: true
         })
     }
     deleteData = (index) => {
@@ -111,15 +75,7 @@ class Qlsp extends React.Component {
             product: {
                 name: "", company: "", phoneNumber: "", positon: "", age: ""
             },
-            closetrashCan: false,
-            textSearch: false,
-            buttonSearch: false,
-            buttonDelete: false,
-            buttonEdit: false,
-            checkALl: false,
-            checkOne: false,
-            dropAll: false,
-            textAll: false
+            hiddenOpen: false
         })
     }
     restoreData = (index) => {
@@ -221,8 +177,8 @@ class Qlsp extends React.Component {
     render() {
         console.log(this.state)
         let { product, dataTable, deleteOne, allChackbox, trashCan, dataTrashcan, formDangNhap,
-            fitterData, inputUpdate, inputSubmit, dataCheckbox, submitUpdate, closetrashCan, textSearch
-            , buttonSearch, buttonDelete, buttonEdit, checkALl, checkOne, dropAll, textAll } = this.state;
+            fitterData, inputUpdate, inputSubmit, dataCheckbox, submitUpdate,
+            hiddenOpen, } = this.state;
         return (
             <div className="App">
                 <TitleToDo />
@@ -254,15 +210,7 @@ class Qlsp extends React.Component {
                     handleOneChecked={this.handleOneChecked}
                     checkCheckbox_2={this.checkCheckbox_2}
                     dataCheckbox={dataCheckbox}
-                    closetrashCan={closetrashCan}
-                    textSearch={textSearch}
-                    buttonSearch={buttonSearch}
-                    buttonDelete={buttonDelete}
-                    buttonEdit={buttonEdit}
-                    checkALl={checkALl}
-                    checkOne={checkOne}
-                    dropAll={dropAll}
-                    textAll={textAll}
+                    hiddenOpen={hiddenOpen}
 
                 />
                 {trashCan && <Trashcan
