@@ -5,18 +5,21 @@ class Trashcan extends React.Component {
         this.state = {
             dataTrashcan: props.dataTrashcan || {},
         }
-
     }
-    componentWillReceiveProps = (nextProps) => {
-       
-        this.setState({
-            dataTrashcan: nextProps.dataTrashcan || {}
-        })
-
+    // componentWillReceiveProps = (nextProps) => {
+    //     this.setState({
+    //         dataTrashcan: nextProps.dataTrashcan || {}
+    //     })
+    // }
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.dataTrashcan !== prevState.dataTrashcan) {
+            return { dataTrashcan: nextProps.dataTrashcan  };
+        }
+        else return null;
     }
     render() {
         let dataTrashCan = this.state.dataTrashcan
-       
+
         const listDada = dataTrashCan.map((data, index) => {
             return <tr key={index.toString()} >
                 <td>{data.name}</td>

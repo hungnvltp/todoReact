@@ -11,22 +11,18 @@ class TableToDo extends React.Component {
             oneLine: props.dataTable || {},
         }
     }
-    componentWillReceiveProps = (nextProps) => {
+    // componentWillReceiveProps = (nextProps) => {
+    //     this.setState({
+    //         dataTable: nextProps.dataTable
+    //     })
 
-        this.setState({
-            dataTable: nextProps.dataTable || {}
-        })
-
-    }
-    // static getDerivedStateFromProps(nextProps, prevState) {
-    //     console.log(3333, nextProps.dataTable)
-    //     console.log(44444, prevState.dataTable)
-    //     if (nextProps.dataTable !== prevState.dataTable) {
-    //         alert(4444)
-    //         return { dataTable: nextProps.dataTable || {} };
-    //     }
-    //     else return null;
     // }
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.dataTable !== prevState.dataTable) {
+            return { dataTable: nextProps.dataTable || {} };
+        }
+        else return null;
+    }
     search = (e) => {
         this.setState(
             {

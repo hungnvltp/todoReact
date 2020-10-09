@@ -22,6 +22,7 @@ class Qlsp extends React.Component {
             submitUpdate: true,
             product: {},
             hiddenOpen: true,
+
         }
     }
     handleSubmit = (product) => {
@@ -60,7 +61,7 @@ class Qlsp extends React.Component {
         this.setState({
             dataTrashcan,
             dataTable,
-            closetrashCan: true,
+            trashCan: true,
         })
     }
     deteleForm = (e) => {
